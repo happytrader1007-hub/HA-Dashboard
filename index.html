@@ -225,6 +225,17 @@
   .cal-cell.win .dayr { color: var(--green); }
   .cal-cell.loss { background: rgba(240,71,90,0.10); border-color: rgba(240,71,90,0.35); }
   .cal-cell.loss .dayr { color: var(--red); }
+  .cal-cell.has-trades { cursor: pointer; transition: all .12s; }
+  .cal-cell.has-trades:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .cal-cell.selected { border-color: var(--accent-2) !important; box-shadow: 0 0 0 1px var(--accent-2); }
+
+  .day-detail { margin-top: 20px; }
+  .day-detail-header {
+    font-size: 13.5px; font-weight: 700; color: var(--text);
+    margin-bottom: 10px;
+  }
+  .day-detail-header .sep { color: var(--text-faint); font-weight: 400; margin: 0 6px; }
+  .day-detail-empty { font-size: 12.5px; color: var(--text-faint); padding: 4px 0 0; }
 
   .footer-note {
     text-align: center; font-size: 11.5px; color: var(--text-faint);
@@ -321,6 +332,7 @@
     </div>
     <div class="cal-summary" id="calSummary"></div>
     <div class="cal-grid" id="calGrid"></div>
+    <div id="dayDetail"></div>
   </div>
 
   <div class="footer-note">
@@ -336,6 +348,8 @@ let allTrades = [];
 let openPositions = {};
 let currentSymbol = "ALL";
 let calMonth = null; // {year, month} 0-indexed month
+let calByDay = {};   // 当前显示月份 每天对应的交易列表
+let selectedDay = null; // 目前点选的日期(用于下方显示明细)
 
 const $ = (id) => document.getElementById(id);
 
@@ -547,6 +561,7 @@ function renderCalendar() {
       byDay[day].push(t);
     }
   });
+  calByDay = byDay; // 供点击某一天时查询用
 
   const monthTrades = Object.values(byDay).flat();
   const monthR = monthTrades.reduce((a,t) => a + t.r_multiple, 0);
@@ -573,20 +588,73 @@ function renderCalendar() {
 
   for (let day = 1; day <= daysInMonth; day++) {
     const dayTrades = byDay[day];
+    const isSelected = selectedDay === day;
     if (dayTrades && dayTrades.length) {
       const dayR = dayTrades.reduce((a,t) => a + t.r_multiple, 0);
       const cls = dayR >= 0 ? "win" : "loss";
-      html += `<div class="cal-cell ${cls}"><span class="daynum">${day}</span><span class="dayr num">${dayR>=0?'+':''}${dayR.toFixed(2)}R</span></div>`;
+      html += `<div class="cal-cell ${cls} has-trades${isSelected ? ' selected' : ''}" data-day="${day}"><span class="daynum">${day}</span><span class="dayr num">${dayR>=0?'+':''}${dayR.toFixed(2)}R</span></div>`;
     } else {
       html += `<div class="cal-cell"><span class="daynum">${day}</span></div>`;
     }
   }
   $("calGrid").innerHTML = html;
+
+  $("calGrid").querySelectorAll(".cal-cell.has-trades").forEach(cell => {
+    cell.addEventListener("click", () => {
+      const day = parseInt(cell.dataset.day, 10);
+      selectedDay = (selectedDay === day) ? null : day; // 再点一次取消选中
+      renderCalendar();
+      renderDayDetail();
+    });
+  });
+
+  renderDayDetail();
+}
+
+function renderDayDetail() {
+  const box = $("dayDetail");
+  if (!selectedDay || !calByDay[selectedDay]) {
+    box.innerHTML = "";
+    return;
+  }
+  const { year, month } = calMonth;
+  const dayTrades = calByDay[selectedDay].slice().sort((a,b) => new Date(a.exit_date) - new Date(b.exit_date));
+  const dayR = dayTrades.reduce((a,t) => a + t.r_multiple, 0);
+  const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(selectedDay).padStart(2,'0')}`;
+
+  const rows = dayTrades.map(t => {
+    const isWin = t.r_multiple > 0;
+    const dirArrow = t.direction === "多" ? "↗" : "↘";
+    const d = new Date(t.exit_date);
+    const timeStr = d.toISOString().slice(11,16);
+    return `
+      <div class="trade-row">
+        <div class="trade-icon ${isWin ? 'win' : 'loss'}">${dirArrow}</div>
+        <div class="trade-body">
+          <div class="trade-top">
+            <span class="trade-sym">${t.symbol}</span>
+            <span class="trade-date">${dateStr} ${timeStr}</span>
+          </div>
+          <div class="trade-prices mono">${fmt(t.entry_price)}<span class="arrow">→</span>${fmt(t.exit_price)}</div>
+        </div>
+        <div class="trade-right">
+          ${reasonBadge(t.reason)}
+          <div class="r-value num ${isWin ? 'pos' : 'neg'}">${isWin ? '+' : ''}${t.r_multiple.toFixed(2)}R</div>
+        </div>
+      </div>`;
+  }).join("");
+
+  box.innerHTML = `
+    <div class="day-detail">
+      <div class="day-detail-header">${dateStr}<span class="sep">·</span>净 ${dayR>=0?'+':''}${dayR.toFixed(2)}R<span class="sep">·</span>${dayTrades.length} 笔</div>
+      ${rows}
+    </div>`;
 }
 
 $("symbolSelect").addEventListener("change", (e) => {
   currentSymbol = e.target.value;
   calMonth = null;
+  selectedDay = null;
   render();
 });
 
@@ -605,11 +673,13 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
 $("calPrev").addEventListener("click", () => {
   calMonth.month--;
   if (calMonth.month < 0) { calMonth.month = 11; calMonth.year--; }
+  selectedDay = null;
   renderCalendar();
 });
 $("calNext").addEventListener("click", () => {
   calMonth.month++;
   if (calMonth.month > 11) { calMonth.month = 0; calMonth.year++; }
+  selectedDay = null;
   renderCalendar();
 });
 
