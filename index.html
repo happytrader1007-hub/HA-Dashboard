@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HA Signal Monitor</title>
+
+<!-- Apple主屏幕图标 (加到主屏幕时显示的icon) -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HA Signal">
+<meta name="theme-color" content="#0a0a0e">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -24,15 +33,50 @@
     --radius: 14px;
   }
   * { box-sizing: border-box; }
+  html, body { height: 100%; }
   body {
     margin: 0;
     background: radial-gradient(ellipse 1200px 600px at 50% -10%, #171722 0%, var(--bg) 55%);
     color: var(--text);
     font-family: 'Inter', -apple-system, sans-serif;
     min-height: 100vh;
-    padding: 32px 20px 80px;
+    display: flex;
   }
   .num, .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---- Sidebar ---- */
+  .sidebar {
+    width: 104px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 12px;
+    gap: 22px;
+    border-right: 1px solid var(--border);
+    min-height: 100vh;
+  }
+  .sidebar .logo {
+    width: 46px; height: 46px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 21px; flex-shrink: 0; margin-bottom: 6px;
+  }
+  .nav-btn {
+    width: 100%;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    background: transparent; border: none; color: var(--text-dim);
+    font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+    padding: 10px 4px; border-radius: 11px; cursor: pointer; transition: all .15s;
+  }
+  .nav-btn svg { width: 20px; height: 20px; }
+  .nav-btn:hover { color: var(--text); background: var(--panel); }
+  .nav-btn.active { color: var(--accent-2); background: var(--panel); }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 32px 24px 80px;
+  }
   .wrap { max-width: 880px; margin: 0 auto; }
 
   /* ---- Header ---- */
@@ -43,12 +87,6 @@
     margin-bottom: 24px;
   }
   .header-left { display: flex; align-items: center; gap: 14px; }
-  .logo {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
-  }
   .header-title { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
   .header-sub { font-size: 12.5px; color: var(--text-dim); margin-top: 3px; }
   .refresh-btn {
@@ -116,15 +154,6 @@
   .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 5px; }
   .stat-value.green { color: var(--green); }
   .stat-value.red { color: var(--red); }
-
-  /* ---- Tabs ---- */
-  .tabs { display: flex; gap: 4px; margin-bottom: 16px; }
-  .tab-btn {
-    background: transparent; border: 1px solid var(--border); color: var(--text-dim);
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
-    padding: 8px 16px; border-radius: 9px; cursor: pointer; transition: all .15s;
-  }
-  .tab-btn.active { background: var(--panel); color: var(--text); border-color: var(--accent); }
 
   /* ---- Trade list ---- */
   .section-title {
@@ -202,7 +231,16 @@
     margin-top: 28px; line-height: 1.6;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
+    body { flex-direction: column; }
+    .sidebar {
+      width: 100%; min-height: auto; flex-direction: row;
+      border-right: none; border-bottom: 1px solid var(--border);
+      padding: 14px 16px; gap: 10px; align-items: center;
+    }
+    .sidebar .logo { margin-bottom: 0; }
+    .nav-btn { width: auto; flex-direction: row; padding: 8px 12px; }
+    .main-content { padding: 20px 16px 60px; }
     .stats-grid { grid-template-columns: repeat(3, 1fr); }
     .cal-summary { grid-template-columns: repeat(2, 1fr); }
     .trade-prices { font-size: 11.5px; }
@@ -210,11 +248,36 @@
 </style>
 </head>
 <body>
+<nav class="sidebar">
+  <div class="logo">
+    <svg width="26" height="26" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="26" x2="30" y2="70" stroke="#fca5b1" stroke-width="4" stroke-linecap="round"/>
+      <rect x="23" y="38" width="14" height="20" rx="3" fill="#3a1620" stroke="#f0475a" stroke-width="3"/>
+      <line x1="50" y1="20" x2="50" y2="62" stroke="#bbf7d0" stroke-width="4" stroke-linecap="round"/>
+      <rect x="43" y="34" width="14" height="22" rx="3" fill="#16341f" stroke="#22c55e" stroke-width="3"/>
+      <line x1="70" y1="12" x2="70" y2="52" stroke="#bbf7d0" stroke-width="4" stroke-linecap="round"/>
+      <rect x="63" y="20" width="14" height="26" rx="3" fill="#16341f" stroke="#22c55e" stroke-width="3"/>
+    </svg>
+  </div>
+  <button class="nav-btn active" data-page="home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 11.5L12 4l9 7.5"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/>
+    </svg>
+    首页
+  </button>
+  <button class="nav-btn" data-page="calendar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+    </svg>
+    日历
+  </button>
+</nav>
+
+<div class="main-content">
 <div class="wrap">
 
   <div class="header">
     <div class="header-left">
-      <div class="logo">◆</div>
       <div>
         <div class="header-title">HA Signal Monitor</div>
         <div class="header-sub" id="updatedText">加载中…</div>
@@ -230,22 +293,17 @@
 
   <select class="symbol-select" id="symbolSelect"></select>
 
-  <div class="status-card">
-    <div class="status-label">
-      <span class="dot" id="statusDot"></span>
-      <span id="statusLabel">目前状态</span>
+  <div id="homePage">
+    <div class="status-card">
+      <div class="status-label">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusLabel">目前状态</span>
+      </div>
+      <div id="statusBody"></div>
     </div>
-    <div id="statusBody"></div>
-  </div>
 
-  <div class="stats-grid" id="statsGrid"></div>
+    <div class="stats-grid" id="statsGrid"></div>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="recent">最近交易</button>
-    <button class="tab-btn" data-tab="calendar">日历</button>
-  </div>
-
-  <div id="recentTab">
     <div class="section-title">
       <span>最近交易</span>
       <span class="count" id="recentCount"></span>
@@ -253,7 +311,7 @@
     <div id="tradeList"></div>
   </div>
 
-  <div id="calendarTab" style="display:none;">
+  <div id="calendarPage" style="display:none;">
     <div class="cal-header">
       <div class="cal-title" id="calTitle"></div>
       <div class="cal-nav">
@@ -270,6 +328,7 @@
     止损0.8% / 止盈1.2% · 1小时周期
   </div>
 
+</div>
 </div>
 
 <script>
@@ -533,13 +592,13 @@ $("symbolSelect").addEventListener("change", (e) => {
 
 $("refreshBtn").addEventListener("click", loadData);
 
-document.querySelectorAll(".tab-btn").forEach(btn => {
+document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-    const tab = btn.dataset.tab;
-    $("recentTab").style.display = tab === "recent" ? "" : "none";
-    $("calendarTab").style.display = tab === "calendar" ? "" : "none";
+    const page = btn.dataset.page;
+    $("homePage").style.display = page === "home" ? "" : "none";
+    $("calendarPage").style.display = page === "calendar" ? "" : "none";
   });
 });
 
