@@ -21,12 +21,7 @@
     "in_position": false
   },
   "XLM": {
-    "in_position": true,
-    "direction": "空",
-    "entry_price": 0.174,
-    "stop_price": 0.175392,
-    "tp_price": 0.17191199999999998,
-    "entry_date": "2026-08-02T19:00:00+00:00"
+    "in_position": false
   },
   "SUI": {
     "in_position": false
