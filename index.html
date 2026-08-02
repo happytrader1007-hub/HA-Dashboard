@@ -392,7 +392,9 @@ function updateFreshness(lastModHeader) {
   }
   const now = new Date();
   const utc = now.toUTCString().slice(17, 25);
-  text += `  ·  UTC ${utc}`;
+  const utc8Date = new Date(now.getTime() + 8 * 3600 * 1000);
+  const utc8 = utc8Date.toUTCString().slice(17, 25);
+  text += `  ·  UTC ${utc}  ·  UTC+8 ${utc8}`;
   $("updatedText").textContent = text;
 }
 
