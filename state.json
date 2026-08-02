@@ -1,17 +1,8 @@
 {
-  "LTC": {
-    "in_position": false
-  },
   "BCH": {
     "in_position": false
   },
-  "DOGE": {
-    "in_position": false
-  },
   "ADA": {
-    "in_position": false
-  },
-  "LINK": {
     "in_position": false
   },
   "SOL": {
@@ -42,6 +33,12 @@
     "in_position": false
   },
   "1000SHIB": {
+    "in_position": false
+  },
+  "BTC": {
+    "in_position": false
+  },
+  "ETH": {
     "in_position": false
   }
 }
