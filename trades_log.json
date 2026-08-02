@@ -1,15 +1,5 @@
 [
   {
-    "symbol": "WLD",
-    "direction": "空",
-    "entry_price": 0.9155,
-    "exit_price": 0.9045139999999999,
-    "entry_date": "2025-08-31T01:00:00",
-    "exit_date": "2025-08-31T05:00:00",
-    "reason": "止盈",
-    "r_multiple": 1.5
-  },
-  {
     "symbol": "ADA",
     "direction": "空",
     "entry_price": 0.8213,
@@ -19998,5 +19988,15 @@
     "exit_date": "2026-08-01T17:00:00",
     "reason": "止盈",
     "r_multiple": 1.5
+  },
+  {
+    "symbol": "ORDI",
+    "direction": "多",
+    "entry_price": 3.654,
+    "exit_price": 3.624768,
+    "entry_date": "2026-08-02T03:00:00+00:00",
+    "exit_date": "2026-08-02T04:00:00+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]
