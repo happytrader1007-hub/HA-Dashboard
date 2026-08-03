@@ -93028,5 +93028,75 @@
     "exit_date": "2026-08-01T17:00:00",
     "reason": "止盈",
     "r_multiple": 1.5
+  },
+  {
+    "symbol": "ORDI",
+    "direction": "多",
+    "entry_price": 3.654,
+    "exit_price": 3.624768,
+    "entry_date": "2026-08-02T03:00:00",
+    "exit_date": "2026-08-02T04:00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
+  },
+  {
+    "symbol": "AVAX",
+    "direction": "多",
+    "entry_price": 6.592,
+    "exit_price": 6.671104,
+    "entry_date": "2026-08-02T13:00:00",
+    "exit_date": "2026-08-02T18:00:00",
+    "reason": "止盈",
+    "r_multiple": 1.5
+  },
+  {
+    "symbol": "1000SHIB",
+    "direction": "多",
+    "entry_price": 4.971e-06,
+    "exit_price": 4.931232e-06,
+    "entry_date": "2026-08-02T16:00:00",
+    "exit_date": "2026-08-02T20:00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
+  },
+  {
+    "symbol": "XLM",
+    "direction": "空",
+    "entry_price": 0.174,
+    "exit_price": 0.175392,
+    "entry_date": "2026-08-02T19:00:00",
+    "exit_date": "2026-08-02T22:00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
+  },
+  {
+    "symbol": "ORDI",
+    "direction": "空",
+    "entry_price": 3.519,
+    "exit_price": 3.547152,
+    "entry_date": "2026-08-03T00:00:00",
+    "exit_date": "2026-08-03T01:00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
+  },
+  {
+    "symbol": "WLD",
+    "direction": "多",
+    "entry_price": 0.3168,
+    "exit_price": 0.32060160000000004,
+    "entry_date": "2026-08-03T02:00:00",
+    "exit_date": "2026-08-03T04:00:00",
+    "reason": "止盈",
+    "r_multiple": 1.5
+  },
+  {
+    "symbol": "ATOM",
+    "direction": "多",
+    "entry_price": 1.256,
+    "exit_price": 1.271072,
+    "entry_date": "2026-08-03T03:00:00",
+    "exit_date": "2026-08-03T07:00:00",
+    "reason": "止盈",
+    "r_multiple": 1.5
   }
 ]
