@@ -36,7 +36,12 @@
     "in_position": false
   },
   "BTC": {
-    "in_position": false
+    "in_position": true,
+    "direction": "多",
+    "entry_price": 63545.7,
+    "stop_price": 63037.3344,
+    "tp_price": 64308.2484,
+    "entry_date": "2026-08-02T23:00:00+00:00"
   },
   "ETH": {
     "in_position": false
