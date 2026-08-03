@@ -93058,35 +93058,5 @@
     "exit_date": "2026-08-03T02:00:00",
     "reason": "止损",
     "r_multiple": -1.0
-  },
-  {
-    "symbol": "WLD",
-    "direction": "多",
-    "entry_price": 0.3168,
-    "exit_price": 0.32060160000000004,
-    "entry_date": "2026-08-03T03:00:00",
-    "exit_date": "2026-08-03T05:00:00",
-    "reason": "止盈",
-    "r_multiple": 1.5
-  },
-  {
-    "symbol": "ATOM",
-    "direction": "多",
-    "entry_price": 1.256,
-    "exit_price": 1.271072,
-    "entry_date": "2026-08-03T04:00:00",
-    "exit_date": "2026-08-03T08:00:00",
-    "reason": "止盈",
-    "r_multiple": 1.5
-  },
-  {
-    "symbol": "WLD",
-    "direction": "多",
-    "entry_price": 0.3096,
-    "exit_price": 0.3133152,
-    "entry_date": "2026-08-03T09:00:00",
-    "exit_date": "2026-08-03T14:00:00",
-    "reason": "止盈",
-    "r_multiple": 1.5
   }
 ]

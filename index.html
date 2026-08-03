@@ -344,6 +344,18 @@
 </div>
 
 <script>
+// 关键修复: 后端存的时间字符串没有带时区标记(比如"2026-08-02T23:00:00")，
+// JS的 new Date(...) 遇到这种字符串会当成"浏览器当地时间"解读，而不是UTC，
+// 导致显示时间跟实际相差好几小时(差距等于时区偏移量)。
+// 这个函数确保一律当作UTC时间解析，不管字符串本身有没有带时区后缀。
+function parseUTC(dateStr) {
+  if (!dateStr) return new Date(NaN);
+  // 如果字符串本身已经带时区信息(Z 或 +hh:mm)，直接解析即可
+  if (/Z$|[+-]\d{2}:\d{2}$/.test(dateStr)) return new Date(dateStr);
+  // 否则明确补上 "Z"，强制当作UTC时间解析
+  return new Date(dateStr + "Z");
+}
+
 let allTrades = [];
 let openPositions = {};
 let currentSymbol = "ALL";
@@ -417,7 +429,7 @@ function populateSymbolSelect() {
 
 function filteredTrades() {
   const t = currentSymbol === "ALL" ? allTrades : allTrades.filter(t => t.symbol === currentSymbol);
-  return t.slice().sort((a,b) => new Date(a.exit_date) - new Date(b.exit_date));
+  return t.slice().sort((a,b) => parseUTC(a.exit_date) - parseUTC(b.exit_date));
 }
 
 function maxLosingStreak(trades) {
@@ -518,7 +530,7 @@ function renderTradeList() {
   $("tradeList").innerHTML = trades.map(t => {
     const isWin = t.r_multiple > 0;
     const dirArrow = t.direction === "多" ? "↗" : "↘";
-    const d = new Date(t.exit_date);
+    const d = parseUTC(t.exit_date);
     const dateStr = d.toISOString().slice(0,10) + " " + d.toISOString().slice(11,16);
     return `
       <div class="trade-row">
@@ -543,7 +555,7 @@ function renderCalendar() {
   const trades = filteredTrades();
   if (!calMonth) {
     if (trades.length) {
-      const d = new Date(trades[trades.length-1].exit_date);
+      const d = parseUTC(trades[trades.length-1].exit_date);
       calMonth = { year: d.getUTCFullYear(), month: d.getUTCMonth() };
     } else {
       const now = new Date();
@@ -556,7 +568,7 @@ function renderCalendar() {
 
   const byDay = {};
   trades.forEach(t => {
-    const d = new Date(t.exit_date);
+    const d = parseUTC(t.exit_date);
     if (d.getUTCFullYear() === year && d.getUTCMonth() === month) {
       const day = d.getUTCDate();
       byDay[day] = byDay[day] || [];
@@ -620,14 +632,14 @@ function renderDayDetail() {
     return;
   }
   const { year, month } = calMonth;
-  const dayTrades = calByDay[selectedDay].slice().sort((a,b) => new Date(a.exit_date) - new Date(b.exit_date));
+  const dayTrades = calByDay[selectedDay].slice().sort((a,b) => parseUTC(a.exit_date) - parseUTC(b.exit_date));
   const dayR = dayTrades.reduce((a,t) => a + t.r_multiple, 0);
   const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(selectedDay).padStart(2,'0')}`;
 
   const rows = dayTrades.map(t => {
     const isWin = t.r_multiple > 0;
     const dirArrow = t.direction === "多" ? "↗" : "↘";
-    const d = new Date(t.exit_date);
+    const d = parseUTC(t.exit_date);
     const timeStr = d.toISOString().slice(11,16);
     return `
       <div class="trade-row">
