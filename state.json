@@ -27,7 +27,12 @@
     "in_position": false
   },
   "WLD": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 0.3296,
+    "stop_price": 0.3322368,
+    "tp_price": 0.3256448,
+    "entry_date": "2026-08-04T03:00:00+00:00"
   },
   "ORDI": {
     "in_position": false
