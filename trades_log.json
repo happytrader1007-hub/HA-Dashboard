@@ -93078,5 +93078,15 @@
     "exit_date": "2026-08-04T15:01:09.580233+00:00",
     "reason": "止盈",
     "r_multiple": 1.5
+  },
+  {
+    "symbol": "BTC",
+    "direction": "空",
+    "entry_price": 63659.7,
+    "exit_price": 64168.9776,
+    "entry_date": "2026-08-03T15:00:00+00:00",
+    "exit_date": "2026-08-04T19:01:13.022732+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]
