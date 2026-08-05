@@ -93078,5 +93078,15 @@
     "exit_date": "2026-08-04T15:01:09.580233+00:00",
     "reason": "止盈",
     "r_multiple": 1.5
+  },
+  {
+    "symbol": "AAVE",
+    "direction": "空",
+    "entry_price": 89.96,
+    "exit_price": 90.67967999999999,
+    "entry_date": "2026-08-05T01:00:00+00:00",
+    "exit_date": "2026-08-05T03:01:15.806447+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]
