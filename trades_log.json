@@ -93118,5 +93118,15 @@
     "exit_date": "2026-08-06T15:01:13.887614+00:00",
     "reason": "止损",
     "r_multiple": -1.0
+  },
+  {
+    "symbol": "1000SHIB",
+    "direction": "空",
+    "entry_price": 4.733e-06,
+    "exit_price": 4.676204e-06,
+    "entry_date": "2026-08-06T10:00:00+00:00",
+    "exit_date": "2026-08-06T23:01:25.711812+00:00",
+    "reason": "止盈",
+    "r_multiple": 1.5
   }
 ]
