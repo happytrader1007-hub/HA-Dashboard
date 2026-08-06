@@ -21,7 +21,12 @@
     "in_position": false
   },
   "XLM": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 0.16023,
+    "stop_price": 0.16151184000000002,
+    "tp_price": 0.15830724000000002,
+    "entry_date": "2026-08-06T10:00:00+00:00"
   },
   "SUI": {
     "in_position": false
@@ -33,6 +38,11 @@
     "in_position": false
   },
   "1000SHIB": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 4.733e-06,
+    "stop_price": 4.770864e-06,
+    "tp_price": 4.676204e-06,
+    "entry_date": "2026-08-06T10:00:00+00:00"
   }
 }
