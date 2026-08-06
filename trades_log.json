@@ -93098,5 +93098,15 @@
     "exit_date": "2026-08-06T02:01:16.986112+00:00",
     "reason": "止盈",
     "r_multiple": 1.5
+  },
+  {
+    "symbol": "SUI",
+    "direction": "空",
+    "entry_price": 0.691,
+    "exit_price": 0.682708,
+    "entry_date": "2026-08-05T11:00:00+00:00",
+    "exit_date": "2026-08-06T04:01:07.803291+00:00",
+    "reason": "止盈",
+    "r_multiple": 1.5
   }
 ]
