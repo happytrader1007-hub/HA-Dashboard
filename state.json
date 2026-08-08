@@ -24,12 +24,7 @@
     "in_position": false
   },
   "SUI": {
-    "in_position": true,
-    "direction": "空",
-    "entry_price": 0.6736,
-    "stop_price": 0.6789888,
-    "tp_price": 0.6655168,
-    "entry_date": "2026-08-07T04:00:00+00:00"
+    "in_position": false
   },
   "WLD": {
     "in_position": false
