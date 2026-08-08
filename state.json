@@ -12,7 +12,12 @@
     "in_position": false
   },
   "UNI": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 5.121,
+    "stop_price": 5.161968000000001,
+    "tp_price": 5.059548,
+    "entry_date": "2023-05-16T00:00:00+00:00"
   },
   "ATOM": {
     "in_position": false
