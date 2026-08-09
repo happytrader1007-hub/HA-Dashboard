@@ -3,12 +3,7 @@
     "in_position": false
   },
   "ADA": {
-    "in_position": true,
-    "direction": "多",
-    "entry_price": 0.1988,
-    "stop_price": 0.1972096,
-    "tp_price": 0.20118560000000002,
-    "entry_date": "2026-08-09T03:00:00+00:00"
+    "in_position": false
   },
   "SOL": {
     "in_position": false

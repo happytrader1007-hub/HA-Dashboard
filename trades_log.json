@@ -93518,5 +93518,15 @@
     "exit_date": "2026-08-08T04:01:09.970496",
     "reason": "止损",
     "r_multiple": -1.0
+  },
+  {
+    "symbol": "ADA",
+    "direction": "多",
+    "entry_price": 0.1988,
+    "exit_price": 0.1972096,
+    "entry_date": "2026-08-09T03:00:00+00:00",
+    "exit_date": "2026-08-09T05:31:06.711996+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]
