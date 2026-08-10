@@ -93588,5 +93588,15 @@
     "exit_date": "2026-08-10T18:31:01.167017+00:00",
     "reason": "止损",
     "r_multiple": -1.0
+  },
+  {
+    "symbol": "ORDI",
+    "direction": "空",
+    "entry_price": 3.505,
+    "exit_price": 3.4629399999999997,
+    "entry_date": "2026-08-10T18:00:00+00:00",
+    "exit_date": "2026-08-10T20:01:22.919018+00:00",
+    "reason": "止盈",
+    "r_multiple": 1.5
   }
 ]
