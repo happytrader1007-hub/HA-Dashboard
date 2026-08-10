@@ -30,7 +30,12 @@
     "in_position": false
   },
   "ORDI": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 3.534,
+    "stop_price": 3.5622719999999997,
+    "tp_price": 3.491592,
+    "entry_date": "2026-08-10T11:00:00+00:00"
   },
   "1000SHIB": {
     "in_position": false
