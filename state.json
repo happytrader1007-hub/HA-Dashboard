@@ -18,12 +18,7 @@
     "in_position": false
   },
   "AAVE": {
-    "in_position": true,
-    "direction": "多",
-    "entry_price": 91.27,
-    "stop_price": 90.53984,
-    "tp_price": 92.36524,
-    "entry_date": "2026-08-10T02:00:00+00:00"
+    "in_position": false
   },
   "XLM": {
     "in_position": false
