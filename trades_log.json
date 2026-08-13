@@ -93618,5 +93618,15 @@
     "exit_date": "2026-08-11T20:01:32.982449+00:00",
     "reason": "止损",
     "r_multiple": -1.0
+  },
+  {
+    "symbol": "SOL",
+    "direction": "空",
+    "entry_price": 75.43,
+    "exit_price": 76.03344000000001,
+    "entry_date": "2026-08-12T22:00:00+00:00",
+    "exit_date": "2026-08-13T03:16:04.258385+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]

@@ -6,12 +6,7 @@
     "in_position": false
   },
   "SOL": {
-    "in_position": true,
-    "direction": "空",
-    "entry_price": 75.43,
-    "stop_price": 76.03344000000001,
-    "tp_price": 74.52484000000001,
-    "entry_date": "2026-08-12T22:00:00+00:00"
+    "in_position": false
   },
   "AVAX": {
     "in_position": false
