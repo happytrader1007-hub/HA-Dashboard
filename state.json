@@ -3,7 +3,12 @@
     "in_position": false
   },
   "ADA": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 0.1793,
+    "stop_price": 0.1807344,
+    "tp_price": 0.17714839999999998,
+    "entry_date": "2026-08-14T11:00:00+00:00"
   },
   "SOL": {
     "in_position": false
@@ -15,7 +20,12 @@
     "in_position": false
   },
   "ATOM": {
-    "in_position": false
+    "in_position": true,
+    "direction": "多",
+    "entry_price": 1.558,
+    "stop_price": 1.545536,
+    "tp_price": 1.576696,
+    "entry_date": "2026-08-14T11:00:00+00:00"
   },
   "AAVE": {
     "in_position": false
