@@ -43,11 +43,6 @@
     "in_position": false
   },
   "1000SHIB": {
-    "in_position": true,
-    "direction": "多",
-    "entry_price": 4.494e-06,
-    "stop_price": 4.458048e-06,
-    "tp_price": 4.547928e-06,
-    "entry_date": "2026-08-14T09:00:00+00:00"
+    "in_position": false
   }
 }
