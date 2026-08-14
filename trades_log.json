@@ -93698,5 +93698,15 @@
     "exit_date": "2026-08-14T15:46:17.206260+00:00",
     "reason": "止损",
     "r_multiple": -1.0
+  },
+  {
+    "symbol": "BCH",
+    "direction": "空",
+    "entry_price": 199.9,
+    "exit_price": 201.4992,
+    "entry_date": "2026-08-14T15:00:00+00:00",
+    "exit_date": "2026-08-14T16:01:06.393696+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]
