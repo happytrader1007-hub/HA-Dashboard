@@ -1,6 +1,11 @@
 {
   "BCH": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 199.9,
+    "stop_price": 201.4992,
+    "tp_price": 197.5012,
+    "entry_date": "2026-08-14T15:00:00+00:00"
   },
   "ADA": {
     "in_position": true,
@@ -32,7 +37,12 @@
     "in_position": false
   },
   "WLD": {
-    "in_position": false
+    "in_position": true,
+    "direction": "空",
+    "entry_price": 0.3392,
+    "stop_price": 0.3419136,
+    "tp_price": 0.33512959999999997,
+    "entry_date": "2026-08-14T15:00:00+00:00"
   },
   "ORDI": {
     "in_position": false
