@@ -20,12 +20,7 @@
     "in_position": false
   },
   "ATOM": {
-    "in_position": true,
-    "direction": "多",
-    "entry_price": 1.549,
-    "stop_price": 1.536608,
-    "tp_price": 1.567588,
-    "entry_date": "2026-08-14T11:00:00+00:00"
+    "in_position": false
   },
   "AAVE": {
     "in_position": false
