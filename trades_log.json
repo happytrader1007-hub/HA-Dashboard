@@ -93658,5 +93658,15 @@
     "exit_date": "2026-08-14T09:16:05.695646+00:00",
     "reason": "止损",
     "r_multiple": -1.0
+  },
+  {
+    "symbol": "ATOM",
+    "direction": "多",
+    "entry_price": 1.558,
+    "exit_price": 1.545536,
+    "entry_date": "2026-08-14T11:00:00+00:00",
+    "exit_date": "2026-08-14T11:16:11.116510+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]
