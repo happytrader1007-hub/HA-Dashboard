@@ -6,7 +6,12 @@
     "in_position": false
   },
   "SOL": {
-    "in_position": false
+    "in_position": true,
+    "direction": "多",
+    "entry_price": 75.42,
+    "stop_price": 74.81664,
+    "tp_price": 76.32504,
+    "entry_date": "2026-08-16T01:00:00+00:00"
   },
   "AVAX": {
     "in_position": false
