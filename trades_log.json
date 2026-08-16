@@ -93718,5 +93718,15 @@
     "exit_date": "2026-08-14T17:31:02.599725+00:00",
     "reason": "止损",
     "r_multiple": -1.0
+  },
+  {
+    "symbol": "WLD",
+    "direction": "空",
+    "entry_price": 0.3431,
+    "exit_price": 0.3458448,
+    "entry_date": "2026-08-16T13:00:00+00:00",
+    "exit_date": "2026-08-16T14:03:54.956288+00:00",
+    "reason": "止损",
+    "r_multiple": -1.0
   }
 ]
